@@ -1,6 +1,11 @@
 name: CI
 
-on: [push]
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/swiftlint.yml'
+      - '.swiftlint.yml'
+      - '**/*.swift'
 
 jobs:
   build:
@@ -13,3 +18,7 @@ jobs:
       run: sudo xcode-select -switch /Applications/Xcode_11.7.app
     - name: Run tests
       run: xcodebuild clean test -project "github-action-testing.xcodeproj" -scheme "github-action-testing" -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=latest"
+    - name: GitHub Action for SwiftLint (Only files changed in the PR)
+      uses: norio-nomura/action-swiftlint@3.1.0
+      env:
+        DIFF_BASE: ${{ github.base_ref }}

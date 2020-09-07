@@ -2,24 +2,6 @@ import Danger
 
 let danger = Danger()
 
-// MARK: - Maybe add jira card id
-
-let jiraIssueIds = ["IOS-", "NX-"]
-let PRTitle = danger.github.pullRequest.title
-let PRBody = danger.github.pullRequest.body ?? ""
-
-if jiraIssueIds.filter({ PRTitle.contains($0) }).isEmpty &&
-    jiraIssueIds.filter({ PRBody.contains($0) }).isEmpty {
-    warn("I noticed you didn't add a Jira card id in PR title and body")
-}
-
-let jiraDefaultIds = ["IOS-XXX", "NX-XXX"]
-
-if !jiraDefaultIds.filter({ PRTitle.contains($0) }).isEmpty ||
-    !jiraDefaultIds.filter({ PRBody.contains($0) }).isEmpty {
-    warn("It looks like you forgot to replace the placeholder card id 😬")
-}
-
 // MARK: - Warn when there is a big PR (both additions and deletion)
 
 let minimalPRlimit = 800

@@ -18,3 +18,7 @@ class FirstViewController: UIViewController {
 
 }
 
+struct test_lint {
+    
+}
+

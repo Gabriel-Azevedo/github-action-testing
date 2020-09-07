@@ -1,16 +1,15 @@
 name: CI
 
-on:
-  pull_request:
-    paths:
-      - '.swiftlint.yml'
-      - '**/*.swift'
+on: [push]
+
 jobs:
-  Danger:
-    runs-on: ubuntu-latest
+  build:
+
+    runs-on: macOS-latest
+
     steps:
-      - uses: actions/checkout@v1
-      - name: Danger
-        uses: 417-72KI/danger-swiftlint@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@v1
+    - name: Force Xcode 11
+      run: sudo xcode-select -switch /Applications/Xcode_11.3.app
+    - name: Run tests
+      run: xcodebuild clean test -project "MyApp.xcodeproj" -scheme "MyApp" -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=latest"

@@ -24,4 +24,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: GitHub Action for `swift test`
-        uses: 417-72KI/action-swift-test@master
+        run: swift test

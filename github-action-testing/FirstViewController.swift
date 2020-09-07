@@ -18,7 +18,7 @@ class FirstViewController: UIViewController {
 
 }
 
-struct testLint {
+struct TestLint {
     
 }
 

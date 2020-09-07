@@ -1,0 +1,6 @@
+framework module Pods_github_action_testingTests {
+  umbrella header "Pods-github-action-testingTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

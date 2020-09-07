@@ -22,19 +22,6 @@ default:
     break
 }
 
-// MARK: - Checklist warnings
-
-let ranTests = "- [ ] ran tests"
-let writeTests = "- [x] unit tests"
-
-if PRBody.contains(ranTests) {
-    warn("Why are you pushing code without run tests?")
-}
-
-if PRBody.contains(writeTests) {
-    message("UNIT TESTS!!! That's why DODÔ loves you. Here's your reward: https://www.youtube.com/watch?v=WQyKuEsLpRY")
-}
-
 // MARK: - Linter changed files (${PODS_ROOT}/SwiftLint/swiftlint)
 
 SwiftLint.lint(inline: true, swiftlintPath: "Pods/SwiftLint/swiftlint")
